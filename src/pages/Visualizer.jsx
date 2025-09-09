@@ -1,6 +1,16 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Play, ChevronRight, Zap } from "lucide-react";
+import {
+  Play,
+  ChevronRight,
+  Zap,
+  Grid,
+  Box,
+  Send,
+  Link2,
+  TreeDeciduous,
+  Share2,
+} from "lucide-react";
 
 const Visualizer = () => {
   const navigate = useNavigate();
@@ -10,7 +20,7 @@ const Visualizer = () => {
     {
       id: "array",
       name: "Array",
-      icon: "📂",
+      icon: <Grid size={24} />,
       color: "from-blue-500 to-cyan-500",
       description: "Visualize searching and sorting algorithms",
       difficulty: "Beginner",
@@ -18,7 +28,7 @@ const Visualizer = () => {
     {
       id: "stack",
       name: "Stack",
-      icon: "📦",
+      icon: <Box size={24} />,
       color: "from-amber-500 to-orange-500",
       description: "Visualize LIFO operations like push and pop",
       difficulty: "Beginner",
@@ -26,7 +36,7 @@ const Visualizer = () => {
     {
       id: "queue",
       name: "Queue",
-      icon: "📤",
+      icon: <Send size={24} />,
       color: "from-green-500 to-teal-500",
       description: "Visualize FIFO operations like enqueue and dequeue",
       difficulty: "Beginner",
@@ -34,7 +44,7 @@ const Visualizer = () => {
     {
       id: "linked-list",
       name: "Linked List",
-      icon: "🔗",
+      icon: <Link2 size={24} />,
       color: "from-purple-500 to-pink-500",
       description: "Visualize singly, doubly and circular linked lists",
       difficulty: "Intermediate",
@@ -42,7 +52,7 @@ const Visualizer = () => {
     {
       id: "tree",
       name: "Tree",
-      icon: "🌳",
+      icon: <TreeDeciduous size={24} />,
       color: "from-indigo-500 to-blue-500",
       description: "Visualize binary trees, BST, and traversal algorithms",
       difficulty: "Intermediate",
@@ -50,17 +60,11 @@ const Visualizer = () => {
     {
       id: "graph",
       name: "Graph",
-      icon: "🕸",
+      icon: <Share2 size={24} />,
       color: "from-red-500 to-pink-500",
       description: "Visualize graph algorithms like BFS, DFS, and Dijkstra",
       difficulty: "Advanced",
     },
-  ];
-
-  const stats = [
-    { value: "6", label: "Data Structures" },
-    { value: "25+", label: "Algorithms" },
-    { value: "100%", label: "Interactive" },
   ];
 
   return (
@@ -77,36 +81,22 @@ const Visualizer = () => {
         </div>
       </nav>
 
-      {/* Header Section */}
-      <section className="max-w-6xl mx-auto px-6 pt-12 pb-8">
-        <div className="text-center mb-10">
-          <h1 className="text-4xl md:text-5xl font-extrabold mb-6">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-pink-500">
-              Data Structures
-            </span>{" "}
-            & Algorithms
-          </h1>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-            Interactive visualizations to help you understand how data
-            structures and algorithms work
-          </p>
-        </div>
+     {/* Header Section */}
+<section className="max-w-6xl mx-auto px-6 pt-0 pb-2">
+  <div className="text-center">
+    <h1 className="text-3xl md:text-4xl font-extrabold leading-tight">
+      <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-pink-500">
+        Data Structures
+      </span>{" "}
+      & Algorithms
+    </h1>
+    <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto mt-1">
+      Learn and explore with interactive visualizations that bring core
+      concepts to life.
+    </p>
+  </div>
+</section>
 
-        {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-12">
-          {stats.map((stat, index) => (
-            <div
-              key={index}
-              className="text-center bg-gray-800/40 backdrop-blur-md rounded-xl p-4 border border-gray-700"
-            >
-              <div className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400">
-                {stat.value}
-              </div>
-              <div className="text-gray-400 text-sm mt-1">{stat.label}</div>
-            </div>
-          ))}
-        </div>
-      </section>
 
       {/* Data Structures Grid */}
       <section className="max-w-6xl mx-auto px-6 pb-16">
@@ -125,7 +115,7 @@ const Visualizer = () => {
               {/* Header */}
               <div className="flex items-center justify-between mb-5">
                 <div
-                  className={`bg-gradient-to-br ${ds.color} w-14 h-14 rounded-xl flex items-center justify-center text-2xl`}
+                  className={`bg-gradient-to-br ${ds.color} w-14 h-14 rounded-xl flex items-center justify-center text-white`}
                 >
                   {ds.icon}
                 </div>

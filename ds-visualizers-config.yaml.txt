@@ -1,0 +1,555 @@
+# Data Structure Visualizers Configuration
+name: Data Structure Visualizers Suite
+description: Interactive visualization of various data structures and algorithms
+version: 1.0.0
+
+# Global UI Configuration
+ui:
+  theme: dark
+  colors:
+    primary: indigo
+    secondary: gray
+    highlight: indigo
+    background: 
+      from: gray-900
+      via: gray-800
+      to: black
+    success: green
+    warning: yellow
+    error: red
+    info: blue
+
+  sidebar:
+    width: 64
+    backgroundColor: gray-800
+    textColor: white
+
+  animation:
+    minSpeed: 50
+    maxSpeed: 2000
+    speedStep: 50
+
+# Array Visualizer Configuration
+array:
+  name: Array Visualizer
+  description: Visualization of array operations and sorting algorithms
+  defaults:
+    size: 10
+    speed: 600
+    targetValue: 50
+    showControls: true
+
+  validation:
+    size:
+      min: 5
+      max: 30
+    value:
+      min: 1
+      max: 100
+
+  algorithms:
+    search:
+      - id: linear-search
+        name: Linear Search
+        description: Checks each element sequentially until it finds the target value.
+        timeComplexity: O(n)
+        spaceComplexity: O(1)
+        icon: Search
+        color: blue
+
+      - id: binary-search
+        name: Binary Search
+        description: Requires a sorted array and repeatedly divides the search interval in half.
+        timeComplexity: O(log n)
+        spaceComplexity: O(1)
+        icon: Search
+        color: blue
+        rotation: 90
+
+    sort:
+      - id: bubble-sort
+        name: Bubble Sort
+        description: Repeatedly swaps adjacent elements if they are in the wrong order.
+        timeComplexity: O(n²)
+        spaceComplexity: O(1)
+        icon: Circle
+        color: blue
+
+      - id: selection-sort
+        name: Selection Sort
+        description: Finds the minimum element and swaps it with the first unsorted element.
+        timeComplexity: O(n²)
+        spaceComplexity: O(1)
+        icon: MousePointer
+        color: green
+
+      - id: insertion-sort
+        name: Insertion Sort
+        description: Builds the final array one item at a time by inserting each element into its proper position.
+        timeComplexity: O(n²)
+        spaceComplexity: O(1)
+        icon: Edit3
+        color: yellow
+
+      - id: quick-sort
+        name: Quick Sort
+        description: Selects a 'pivot' element and partitions the array around the pivot.
+        timeComplexity: O(n log n) average, O(n²) worst
+        spaceComplexity: O(log n)
+        icon: Zap
+        color: purple
+
+      - id: merge-sort
+        name: Merge Sort
+        description: Divides the array into halves, sorts them, and then merges them.
+        timeComplexity: O(n log n)
+        spaceComplexity: O(n)
+        icon: GitMerge
+        color: pink
+
+# Stack Visualizer Configuration
+stack:
+  name: Stack Visualizer
+  description: Visualization of stack data structure operations
+  defaults:
+    size: 8
+    speed: 600
+    showControls: true
+
+  validation:
+    size:
+      min: 5
+      max: 15
+    value:
+      min: 1
+      max: 100
+
+  operations:
+    - id: push
+      name: Push
+      description: Adds an element to the top of the stack.
+      timeComplexity: O(1)
+      spaceComplexity: O(1)
+      icon: ArrowUp
+      color: green
+      requiresValue: true
+
+    - id: pop
+      name: Pop
+      description: Removes the top element from the stack.
+      timeComplexity: O(1)
+      spaceComplexity: O(1)
+      icon: ArrowDown
+      color: red
+      requiresValue: false
+
+    - id: peek
+      name: Peek
+      description: Returns the top element without removing it.
+      timeComplexity: O(1)
+      spaceComplexity: O(1)
+      icon: Eye
+      color: blue
+      requiresValue: false
+
+    - id: is-empty
+      name: Is Empty
+      description: Checks if the stack is empty.
+      timeComplexity: O(1)
+      spaceComplexity: O(1)
+      icon: CheckSquare
+      color: yellow
+      requiresValue: false
+
+    - id: is-full
+      name: Is Full
+      description: Checks if the stack is full.
+      timeComplexity: O(1)
+      spaceComplexity: O(1)
+      icon: AlertCircle
+      color: purple
+      requiresValue: false
+
+  visualization:
+    height: 96
+    elementWidth: 40
+    elementHeight: 50
+    emptyColor: gray-700
+    filledColor: gray-600
+    highlightedColor: indigo-500
+
+# Queue Visualizer Configuration
+queue:
+  name: Queue Visualizer
+  description: Visualization of queue data structure operations
+  defaults:
+    size: 8
+    speed: 600
+    showControls: true
+
+  validation:
+    size:
+      min: 5
+      max: 15
+    value:
+      min: 1
+      max: 100
+
+  operations:
+    - id: enqueue
+      name: Enqueue
+      description: Adds an element to the rear of the queue.
+      timeComplexity: O(1)
+      spaceComplexity: O(1)
+      icon: ArrowRight
+      color: green
+      requiresValue: true
+
+    - id: dequeue
+      name: Dequeue
+      description: Removes an element from the front of the queue.
+      timeComplexity: O(1)
+      spaceComplexity: O(1)
+      icon: ArrowLeft
+      color: red
+      requiresValue: false
+
+    - id: peek
+      name: Peek
+      description: Returns the front element without removing it.
+      timeComplexity: O(1)
+      spaceComplexity: O(1)
+      icon: Eye
+      color: blue
+      requiresValue: false
+
+    - id: is-empty
+      name: Is Empty
+      description: Checks if the queue is empty.
+      timeComplexity: O(1)
+      spaceComplexity: O(1)
+      icon: CheckSquare
+      color: yellow
+      requiresValue: false
+
+    - id: is-full
+      name: Is Full
+      description: Checks if the queue is full.
+      timeComplexity: O(1)
+      spaceComplexity: O(1)
+      icon: AlertCircle
+      color: purple
+      requiresValue: false
+
+  visualization:
+    elementWidth: 80
+    elementHeight: 50
+    emptyColor: gray-700
+    filledColor: gray-600
+    highlightedColor: indigo-500
+
+# Linked List Visualizer Configuration
+linkedlist:
+  name: Linked List Visualizer
+  description: Visualization of linked list operations
+  defaults:
+    size: 5
+    speed: 600
+    showControls: true
+
+  validation:
+    size:
+      min: 3
+      max: 10
+    value:
+      min: 1
+      max: 100
+    position:
+      min: 0
+      max: 20
+
+  operations:
+    - id: insert-front
+      name: Insert at Front
+      description: Insert a new node at the front of the linked list.
+      timeComplexity: O(1)
+      spaceComplexity: O(1)
+      icon: PlusCircle
+      color: green
+      requiresValue: true
+      requiresPosition: false
+
+    - id: insert-end
+      name: Insert at End
+      description: Insert a new node at the end of the linked list.
+      timeComplexity: O(n)
+      spaceComplexity: O(1)
+      icon: PlusCircle
+      color: blue
+      requiresValue: true
+      requiresPosition: false
+
+    - id: insert-at
+      name: Insert at Position
+      description: Insert a new node at a specific position in the linked list.
+      timeComplexity: O(n)
+      spaceComplexity: O(1)
+      icon: PlusCircle
+      color: purple
+      requiresValue: true
+      requiresPosition: true
+
+    - id: delete-front
+      name: Delete from Front
+      description: Delete the node at the front of the linked list.
+      timeComplexity: O(1)
+      spaceComplexity: O(1)
+      icon: MinusCircle
+      color: red
+      requiresValue: false
+      requiresPosition: false
+
+    - id: delete-end
+      name: Delete from End
+      description: Delete the node at the end of the linked list.
+      timeComplexity: O(n)
+      spaceComplexity: O(1)
+      icon: MinusCircle
+      color: orange
+      requiresValue: false
+      requiresPosition: false
+
+    - id: delete-at
+      name: Delete at Position
+      description: Delete a node at a specific position in the linked list.
+      timeComplexity: O(n)
+      spaceComplexity: O(1)
+      icon: MinusCircle
+      color: red
+      requiresValue: false
+      requiresPosition: true
+
+    - id: search
+      name: Search
+      description: Search for a value in the linked list.
+      timeComplexity: O(n)
+      spaceComplexity: O(1)
+      icon: Search
+      color: blue
+      requiresValue: true
+      requiresPosition: false
+
+    - id: traverse
+      name: Traverse
+      description: Traverse through all nodes of the linked list.
+      timeComplexity: O(n)
+      spaceComplexity: O(1)
+      icon: List
+      color: yellow
+      requiresValue: false
+      requiresPosition: false
+
+  visualization:
+    nodeSize: 60
+    arrowLength: 12
+    emptyColor: gray-700
+    filledColor: gray-600
+    highlightedColor: indigo-500
+
+# Tree Visualizer Configuration
+tree:
+  name: Tree Visualizer
+  description: Visualization of tree data structures and algorithms
+  defaults:
+    size: 5
+    speed: 600
+    showControls: true
+
+  validation:
+    size:
+      min: 3
+      max: 10
+    value:
+      min: 1
+      max: 100
+
+  algorithms:
+    - id: insert
+      name: Insert
+      description: Insert a new node into the binary search tree.
+      timeComplexity: O(h) where h is height of tree
+      spaceComplexity: O(1)
+      icon: PlusCircle
+      color: green
+      requiresValue: true
+
+    - id: search
+      name: Search
+      description: Search for a value in the binary search tree.
+      timeComplexity: O(h) where h is height of tree
+      spaceComplexity: O(1)
+      icon: Search
+      color: blue
+      requiresValue: true
+
+    - id: delete
+      name: Delete
+      description: Delete a node from the binary search tree.
+      timeComplexity: O(h) where h is height of tree
+      spaceComplexity: O(1)
+      icon: MinusCircle
+      color: red
+      requiresValue: true
+
+    - id: in-order
+      name: In-order Traversal
+      description: In-order traversal: left, root, right.
+      timeComplexity: O(n)
+      spaceComplexity: O(h) where h is height of tree
+      icon: List
+      color: yellow
+      requiresValue: false
+
+    - id: pre-order
+      name: Pre-order Traversal
+      description: Pre-order traversal: root, left, right.
+      timeComplexity: O(n)
+      spaceComplexity: O(h) where h is height of tree
+      icon: List
+      color: purple
+      requiresValue: false
+
+    - id: post-order
+      name: Post-order Traversal
+      description: Post-order traversal: left, right, root.
+      timeComplexity: O(n)
+      spaceComplexity: O(h) where h is height of tree
+      icon: List
+      color: pink
+      requiresValue: false
+
+    - id: level-order
+      name: Level-order Traversal
+      description: Level-order traversal: breadth-first level by level.
+      timeComplexity: O(n)
+      spaceComplexity: O(n)
+      icon: List
+      color: indigo
+      requiresValue: false
+
+  visualization:
+    nodeSize: 50
+    levelSpacing: 20
+    emptyColor: gray-700
+    filledColor: gray-600
+    highlightedColor: indigo-500
+
+# Graph Visualizer Configuration
+graph:
+  name: Graph Visualizer
+  description: Visualization of graph algorithms
+  defaults:
+    size: 6
+    speed: 600
+    showControls: true
+    graphType: undirected
+
+  validation:
+    size:
+      min: 4
+      max: 10
+    value:
+      min: 1
+      max: 100
+
+  algorithms:
+    - id: bfs
+      name: Breadth-First Search
+      description: Explores all neighbor nodes at the present depth before moving on to nodes at the next depth level.
+      timeComplexity: O(V + E)
+      spaceComplexity: O(V)
+      icon: Expand
+      color: blue
+      requiresStart: true
+      requiresEnd: false
+
+    - id: dfs
+      name: Depth-First Search
+      description: Explores as far as possible along each branch before backtracking.
+      timeComplexity: O(V + E)
+      spaceComplexity: O(V)
+      icon: MinusSquare
+      color: green
+      requiresStart: true
+      requiresEnd: false
+
+    - id: dijkstra
+      name: Dijkstra's Algorithm
+      description: Finds the shortest path between nodes in a graph with non-negative edge weights.
+      timeComplexity: O(E + V log V)
+      spaceComplexity: O(V)
+      icon: Navigation
+      color: purple
+      requiresStart: true
+      requiresEnd: true
+
+    - id: prim
+      name: Prim's Algorithm
+      description: Finds a minimum spanning tree for a weighted undirected graph.
+      timeComplexity: O(E log V)
+      spaceComplexity: O(V)
+      icon: GitBranch
+      color: yellow
+      requiresStart: true
+      requiresEnd: false
+
+  visualization:
+    nodeRadius: 20
+    nodeSpacing: 100
+    edgeWidth: 2
+    nodeColor: gray-600
+    edgeColor: gray-500
+    highlightedColor: indigo-500
+
+# Text content
+content:
+  titles:
+    array: Array Visualizer
+    stack: Stack Visualizer
+    queue: Queue Visualizer
+    linkedlist: Linked List Visualizer
+    tree: Tree Visualizer
+    graph: Graph Visualizer
+
+  sidebarTitles:
+    array: Algorithms
+    stack: Stack Operations
+    queue: Queue Operations
+    linkedlist: Linked List Operations
+    tree: Tree Algorithms
+    graph: Graph Algorithms
+
+  common:
+    emptyText: Empty
+    noneText: None
+    selectAlgorithm: Select an algorithm to visualize
+    selectOperation: Select an operation to visualize
+    startButton: Start Visualization
+    visualizeButton: Visualize Algorithm
+    randomizeButton: Randomize
+    applyButton: Apply
+    speedLabel: Speed
+    sizeLabel: Size
+    valueLabel: Value
+    positionLabel: Position
+    startNodeLabel: Start Node
+    endNodeLabel: End Node
+    stepLabel: Step
+    ofLabel: of
+
+# Responsive design breakpoints
+breakpoints:
+  mobile: 640px
+  tablet: 768px
+  desktop: 1024px
+  largeDesktop: 1280px

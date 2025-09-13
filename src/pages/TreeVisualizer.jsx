@@ -888,125 +888,183 @@ export default function TreeVisualizer() {
               </div>
             </div>
           )}
+
+          {/* Traversal Result */}
+          {traversalResult && (
+            <div className="bg-gray-800 p-4 rounded-lg mb-6">
+              <h2 className="text-xl font-bold mb-2">Traversal Result</h2>
+              <p className="text-gray-300">{traversalResult}</p>
+            </div>
+          )}
+
           {/* Visualization Area */}
-<div className="bg-gray-800 p-6 rounded-lg mb-6 relative">
-  <div className="flex flex-col items-center mb-6 relative" id="tree-container">
-    <svg
-      className="absolute top-0 left-0 w-full h-full pointer-events-none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      {treeLevels.map((level, levelIndex) =>
-        level.map((value, nodeIndex) => {
-          if (value === null) return null;
+          <div className="bg-gray-800 p-6 rounded-lg mb-6 relative">
+            <div className="flex flex-col items-center mb-6 relative" id="tree-container">
+              <svg
+                className="absolute top-0 left-0 w-full h-full pointer-events-none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                {treeLevels.map((level, levelIndex) =>
+                  level.map((value, nodeIndex) => {
+                    if (value === null) return null;
 
-          // Calculate parent index
-          const parentIndex = Math.floor(nodeIndex / 2);
-          if (levelIndex === 0 || treeLevels[levelIndex - 1][parentIndex] === null) return null;
+                    // Calculate parent index
+                    const parentIndex = Math.floor(nodeIndex / 2);
+                    if (levelIndex === 0 || treeLevels[levelIndex - 1][parentIndex] === null) return null;
 
-          const parentId = `node-${levelIndex - 1}-${parentIndex}`;
-          const childId = `node-${levelIndex}-${nodeIndex}`;
+                    const parentId = `node-${levelIndex - 1}-${parentIndex}`;
+                    const childId = `node-${levelIndex}-${nodeIndex}`;
 
-          const parentEl = document.getElementById(parentId);
-          const childEl = document.getElementById(childId);
+                    const parentEl = document.getElementById(parentId);
+                    const childEl = document.getElementById(childId);
 
-          if (parentEl && childEl) {
-            const parentRect = parentEl.getBoundingClientRect();
-            const childRect = childEl.getBoundingClientRect();
-            const containerRect = document.getElementById("tree-container").getBoundingClientRect();
+                    if (parentEl && childEl) {
+                      const parentRect = parentEl.getBoundingClientRect();
+                      const childRect = childEl.getBoundingClientRect();
+                      const containerRect = document.getElementById("tree-container").getBoundingClientRect();
 
-            // Centers of nodes
-            const x1 = parentRect.left + parentRect.width / 2 - containerRect.left;
-            const y1 = parentRect.top + parentRect.height / 2 - containerRect.top;
-            const x2 = childRect.left + childRect.width / 2 - containerRect.left;
-            const y2 = childRect.top + childRect.height / 2 - containerRect.top;
+                      // Centers of nodes
+                      const x1 = parentRect.left + parentRect.width / 2 - containerRect.left;
+                      const y1 = parentRect.top + parentRect.height / 2 - containerRect.top;
+                      const x2 = childRect.left + childRect.width / 2 - containerRect.left;
+                      const y2 = childRect.top + childRect.height / 2 - containerRect.top;
 
-            // Calculate angle for offset
-            const dx = x2 - x1;
-            const dy = y2 - y1;
-            const angle = Math.atan2(dy, dx);
-            const r = parentRect.width / 2; // radius of the circle
+                      // Calculate angle for offset
+                      const dx = x2 - x1;
+                      const dy = y2 - y1;
+                      const angle = Math.atan2(dy, dx);
+                      const r = parentRect.width / 2; // radius of the circle
 
-            // Offset so line starts/ends at the edge of nodes
-            const x1Offset = x1 + r * Math.cos(angle);
-            const y1Offset = y1 + r * Math.sin(angle);
-            const x2Offset = x2 - r * Math.cos(angle);
-            const y2Offset = y2 - r * Math.sin(angle);
+                      // Offset so line starts/ends at the edge of nodes
+                      const x1Offset = x1 + r * Math.cos(angle);
+                      const y1Offset = y1 + r * Math.sin(angle);
+                      const x2Offset = x2 - r * Math.cos(angle);
+                      const y2Offset = y2 - r * Math.sin(angle);
 
-            return (
-              <line
-                key={`${parentId}-${childId}`}
-                x1={x1Offset}
-                y1={y1Offset}
-                x2={x2Offset}
-                y2={y2Offset}
-                stroke="white"
-                strokeWidth="2"
-                markerEnd="url(#arrowhead)"
-              />
-            );
-          }
-          return null;
-        })
-      )}
+                      return (
+                        <line
+                          key={`${parentId}-${childId}`}
+                          x1={x1Offset}
+                          y1={y1Offset}
+                          x2={x2Offset}
+                          y2={y2Offset}
+                          stroke="white"
+                          strokeWidth="2"
+                          markerEnd="url(#arrowhead)"
+                        />
+                      );
+                    }
+                    return null;
+                  })
+                )}
 
-      <defs>
-        <marker
-          id="arrowhead"
-          markerWidth="10"
-          markerHeight="7"
-          refX="10"
-          refY="3.5"
-          orient="auto"
-          fill="white"
-        >
-          <polygon points="0 0, 10 3.5, 0 7" />
-        </marker>
-      </defs>
-    </svg>
+                <defs>
+                  <marker
+                    id="arrowhead"
+                    markerWidth="10"
+                    markerHeight="7"
+                    refX="10"
+                    refY="3.5"
+                    orient="auto"
+                    fill="white"
+                  >
+                    <polygon points="0 0, 10 3.5, 0 7" />
+                  </marker>
+                </defs>
+              </svg>
 
-    <div className="flex flex-col items-center justify-center mb-2">
-      {treeLevels.length === 0 ? (
-        <div className="text-gray-500 text-lg py-10">Tree is empty</div>
-      ) : (
-        treeLevels.map((level, levelIndex) => (
-          <div key={levelIndex} className="flex justify-center items-center my-2">
-            {level.map((value, nodeIndex) => {
-              const isHighlighted = currentStepObj?.highlighted?.includes(value);
-              return value !== null ? (
-                <div
-                  key={`${levelIndex}-${nodeIndex}`}
-                  id={`node-${levelIndex}-${nodeIndex}`}
-                  className={`flex items-center justify-center mx-2 transition-all duration-300 ${
-                    isHighlighted ? "bg-indigo-500" : "bg-gray-600"
-                  }`}
-                  style={{
-                    height: "50px",
-                    width: "50px",
-                    borderRadius: "50%",
+              <div className="flex flex-col items-center justify-center mb-2">
+                {treeLevels.length === 0 ? (
+                  <div className="text-gray-500 text-lg py-10">Tree is empty</div>
+                ) : (
+                  treeLevels.map((level, levelIndex) => (
+                    <div key={levelIndex} className="flex justify-center items-center my-2">
+                      {level.map((value, nodeIndex) => {
+                        const isHighlighted = currentStepObj?.highlighted?.includes(value);
+                        return value !== null ? (
+                          <div
+                            key={`${levelIndex}-${nodeIndex}`}
+                            id={`node-${levelIndex}-${nodeIndex}`}
+                            className={`flex items-center justify-center mx-2 transition-all duration-300 ${
+                              isHighlighted ? "bg-indigo-500" : "bg-gray-600"
+                            }`}
+                            style={{
+                              height: "50px",
+                              width: "50px",
+                              borderRadius: "50%",
+                            }}
+                          >
+                            <span className="text-lg font-bold">{value}</span>
+                          </div>
+                        ) : (
+                          <div
+                            key={`${levelIndex}-${nodeIndex}`}
+                            className="flex items-center justify-center mx-2 opacity-0"
+                            style={{
+                              height: "50px",
+                              width: "50px",
+                            }}
+                          >
+                            <span className="text-lg font-bold">-</span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  ))
+                )}
+              </div>
+            </div>
+
+            {/* Step Description */}
+            {currentStepObj && (
+              <div className="bg-gray-700 p-4 rounded-lg">
+                <p className="text-gray-300">{currentStepObj.description}</p>
+              </div>
+            )}
+
+            {/* Playback Controls */}
+            {steps.length > 0 && (
+              <div className="flex items-center justify-center mt-4 space-x-4">
+                <button
+                  onClick={() => {
+                    setIsPlaying(false);
+                    setCurrentStepIndex(0);
                   }}
+                  className="p-2 rounded-full bg-gray-700 hover:bg-gray-600"
                 >
-                  <span className="text-lg font-bold">{value}</span>
-                </div>
-              ) : (
-                <div
-                  key={`${levelIndex}-${nodeIndex}`}
-                  className="flex items-center justify-center mx-2 opacity-0"
-                  style={{
-                    height: "50px",
-                    width: "50px",
+                  <RotateCcw size={20} />
+                </button>
+                <button
+                  onClick={() => {
+                    if (currentStepIndex > 0) {
+                      setIsPlaying(false);
+                      setCurrentStepIndex(currentStepIndex - 1);
+                    }
                   }}
+                  className="p-2 rounded-full bg-gray-700 hover:bg-gray-600"
                 >
-                  <span className="text-lg font-bold">-</span>
-                </div>
-              );
-            })}
+                  <ChevronLeft size={20} />
+                </button>
+                <button
+                  onClick={() => setIsPlaying(!isPlaying)}
+                  className="p-2 rounded-full bg-indigo-600 hover:bg-indigo-700"
+                >
+                  {isPlaying ? <Pause size={20} /> : <Play size={20} />}
+                </button>
+                <button
+                  onClick={() => {
+                    if (currentStepIndex < steps.length - 1) {
+                      setIsPlaying(false);
+                      setCurrentStepIndex(currentStepIndex + 1);
+                    }
+                  }}
+                  className="p-2 rounded-full bg-gray-700 hover:bg-gray-600"
+                >
+                  <ChevronRight size={20} />
+                </button>
+              </div>
+            )}
           </div>
-        ))
-      )}
-    </div>
-  </div>
-  </div>
-
           
           {/* Tree Info */}
           <div className="bg-gray-800 p-4 rounded-lg">

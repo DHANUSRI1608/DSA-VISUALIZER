@@ -1,12 +1,75 @@
-# React + Vite
+DSA Visualizer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A Data Structures & Algorithms Visualizer built with React (Vite), styled with Tailwind CSS, and fully containerized using Docker + Nginx.
 
-Currently, two official plugins are available:
+This project helps you understand and visualize popular algorithms like sorting, searching, and graph traversal in an interactive way.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🚀 Features
 
-## Expanding the ESLint configuration
+🔄 Visualize sorting algorithms step-by-step
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+🌲 Tree and graph traversal animations
+
+🎨 Clean UI powered by Tailwind CSS
+
+🐳 Dockerized → run anywhere without dependencies
+
+⚡ Fast development with Vite
+
+🛠️ Tech Stack
+
+Frontend: React (Vite)
+
+Styling: Tailwind CSS
+
+Containerization: Docker, Docker Compose
+
+Web Server (Prod): Nginx
+
+📂 Project Structure
+src/
+ ┣ pages/              # Algorithm pages
+ ┣ App.jsx             # Root app
+ ┣ main.jsx            # React entry point
+ ┣ index.css           # Global styles
+ ┣ index.html          # Root HTML
+ ┗ ...
+Dockerfile             # Production build (React + Nginx)
+Dockerfile.dev         # Development build (React + Vite)
+docker-compose.yml     # Compose config
+nginx.conf             # Nginx config for SPA routing
+
+🐳 Running with Docker
+1️⃣ Production (Nginx build)
+
+Build and run the production container:
+
+docker build -t dsa-visualizer .
+docker run -p 3000:80 dsa-visualizer
+
+
+App available at 👉 http://localhost:3000
+
+2️⃣ Development (Hot Reload with Vite)
+
+Use Dockerfile.dev + Docker Compose:
+
+docker compose -f docker-compose.yml up --build
+
+
+App available at 👉 http://localhost:5173
+
+🌍 Pull from Docker Hub
+
+No need to build manually — just pull the prebuilt image:
+
+docker run -p 3000:80 dhanusri1608/dsa-visualizer:latest
+
+👩‍💻 Author
+
+Dhanusri K R R
+🔗 Docker Hub Profile
+
+📜 License
+
+This project is licensed under the MIT License.

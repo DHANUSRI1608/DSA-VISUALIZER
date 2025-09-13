@@ -1,75 +1,91 @@
-DSA Visualizer
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
 
-A Data Structures & Algorithms Visualizer built with React (Vite), styled with Tailwind CSS, and fully containerized using Docker + Nginx.
+  <h1>🔮 DSA VISUALIZER</h1>
+  <p><b>A POWERFUL DATA STRUCTURES & ALGORITHMS VISUALIZER</b> built with 
+  <b>React (Vite)</b>, styled using <b>Tailwind CSS</b>, and fully containerized with 
+  <b>Docker + Nginx</b>.  
+  Learn, understand, and visualize popular algorithms like <b>Sorting, Searching, and Graph Traversal</b> in an interactive way.</p>
 
-This project helps you understand and visualize popular algorithms like sorting, searching, and graph traversal in an interactive way.
+  <div class="section">
+    <h2>✨ FEATURES</h2>
+    <ul>
+      <li> Step-by-step <b>visualization</b> of sorting algorithms</li>
+      <li> <b>Graph & Tree traversal</b> animations</li>
+      <li> Modern <b>UI powered by Tailwind CSS</b></li>
+      <li> <b>Dockerized</b> → Run anywhere, <b>NO dependencies required</b></li>
+      <li> <b>Super-fast development</b> with Vite</li>
+    </ul>
+  </div>
 
-🚀 Features
+  <div class="section">
+    <h2>🛠️ TECH STACK</h2>
+    <ul>
+      <li>⚛️ <b>Frontend:</b> React (Vite)</li>
+      <li>🎨 <b>Styling:</b> Tailwind CSS</li>
+      <li>🐳 <b>Containerization:</b> Docker, Docker Compose</li>
+      <li>🌐 <b>Web Server (Production):</b> Nginx</li>
+    </ul>
+  </div>
 
-🔄 Visualize sorting algorithms step-by-step
-
-🌲 Tree and graph traversal animations
-
-🎨 Clean UI powered by Tailwind CSS
-
-🐳 Dockerized → run anywhere without dependencies
-
-⚡ Fast development with Vite
-
-🛠️ Tech Stack
-
-Frontend: React (Vite)
-
-Styling: Tailwind CSS
-
-Containerization: Docker, Docker Compose
-
-Web Server (Prod): Nginx
-
-📂 Project Structure
+  <div class="section">
+    <h2>📂 PROJECT STRUCTURE</h2>
+    <pre>
 src/
- ┣ pages/              # Algorithm pages
- ┣ App.jsx             # Root app
- ┣ main.jsx            # React entry point
- ┣ index.css           # Global styles
- ┣ index.html          # Root HTML
+ ┣ 📁 pages/           👉 Algorithm Pages
+ ┣ 📄 App.jsx          👉 Root App Component
+ ┣ 📄 main.jsx         👉 React Entry Point
+ ┣ 🎨 index.css        👉 Global Styles
+ ┣ 🌐 index.html       👉 Root HTML
  ┗ ...
-Dockerfile             # Production build (React + Nginx)
-Dockerfile.dev         # Development build (React + Vite)
-docker-compose.yml     # Compose config
-nginx.conf             # Nginx config for SPA routing
+📄 Dockerfile          👉 Production Build (React + Nginx)
+📄 Dockerfile.dev      👉 Development Build (React + Vite)
+📄 docker-compose.yml  👉 Compose Config
+📄 nginx.conf          👉 Nginx Config for SPA Routing
+    </pre>
+  </div>
 
-🐳 Running with Docker
-1️⃣ Production (Nginx build)
+  <div class="section">
+    🐳 RUNNING WITH DOCKER
 
-Build and run the production container:
-
+    ✅ 1. PRODUCTION (Nginx Build)
+ 
 docker build -t dsa-visualizer .
 docker run -p 3000:80 dsa-visualizer
+    </pre>
+    <p>👉 Open in browser: <a href="http://localhost:3000" target="_blank">http://localhost:3000</a></p>
 
-
-App available at 👉 http://localhost:3000
-
-2️⃣ Development (Hot Reload with Vite)
-
-Use Dockerfile.dev + Docker Compose:
-
+    ⚡ 2. DEVELOPMENT (Hot Reload with Vite)
+   
 docker compose -f docker-compose.yml up --build
+    </pre>
+    <p>👉 Open in browser: <a href="http://localhost:5173" target="_blank">http://localhost:5173</a></p>
 
-
-App available at 👉 http://localhost:5173
-
-🌍 Pull from Docker Hub
-
-No need to build manually — just pull the prebuilt image:
-
+   🌍 3. PULL DIRECTLY FROM DOCKER HUB
+    <pre>
 docker run -p 3000:80 dhanusri1608/dsa-visualizer:latest
+    </pre>
+  </div>
 
-👩‍💻 Author
+  <div class="section">
+    👩‍💻 AUTHOR
+    <p><b>Dhanusri R 🤍</b></p>
+  </div>
 
-Dhanusri K R R
-🔗 Docker Hub Profile
+  <div class="section">
+    📜 LICENSE
+    <p>Licensed under the <b>MIT License</b>.  
+    Feel free to use it, learn from it, and improve it 🚀</p>
+  </div>
 
-📜 License
+  <div class="footer">
+    © 2025 DSA Visualizer — Built with ❤️ using React, Tailwind, and Docker.
+  </div>
 
-This project is licensed under the MIT License.
+</body>
+</html>
